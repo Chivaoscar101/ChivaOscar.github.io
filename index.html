@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi 14 de febrero?</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="hearts-container"></div>
+    <div class="container">
+        <h1>¿Quieres ser mi 14 de febrero? ❤️</h1>
+        <div class="buttons">
+            <button class="yes" onclick="mostrarModal()">Sí 💖</button>
+            <button class="no" id="noBtn" onmouseover="moverBoton()">No 😢</button>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>¡Sabía que dirías que sí! ❤️🥰</h2>
+            <p>Eres lo mejor de mi vida, y si ya te harte ni modo Ggg. 💕</p>
+            <div class="image-container">
+                <img src="img/OpcyMon.jpeg" alt="Nosotros" class="modal-image">
+            </div>
+            <button onclick="cerrarModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        function mostrarModal() {
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        function cerrarModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        function moverBoton() {
+            let noBtn = document.getElementById("noBtn");
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 100);
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.querySelector(".hearts-container").appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
